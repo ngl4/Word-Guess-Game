@@ -40,8 +40,12 @@ document.onkeyup = function(event) {
  
 
     //Problem----Condition: userGuess cannot be entered repetitively 
+    //Solution -- using includes method to compare and return false to stop the keyon function working
 
+    if (userGuessArr.includes(userGuess)) {
 
+      return false;
+    }
  
 
 
@@ -58,7 +62,10 @@ document.onkeyup = function(event) {
         guessLeft = 12;
         location.reload();
         
-        //Let the user knows the answer 
+        //Problem: Display the final answer even user cannot guess out the letter
+
+
+
   
       }
   
@@ -70,7 +77,12 @@ document.onkeyup = function(event) {
   if (computerChoice.includes(userGuess)) {   //includes will return true or false 
 
     console.log("it matches!");
-    //display the matches 
+
+
+    //Problem: display the matches  (with underscore)
+
+
+    //Problem: logic for wins number 
 
 
   }else {
@@ -93,15 +105,16 @@ document.onkeyup = function(event) {
     "letters-already-guess"
   ).textContent = userGuessArr.join(", ");
 
-  //???how to access to a specific letters of the word ???? create another logic within ComputerChoice?
+  
 
 
-
-
-  //Display all the results to HTML page
+  //Display guessLeft to html
 
   document.getElementById('guess-left').textContent = guessLeft;
 
+
+
+  //Display Wins-number to html
 
 
 
