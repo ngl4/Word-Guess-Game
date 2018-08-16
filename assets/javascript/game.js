@@ -26,6 +26,22 @@ var computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
 
 console.log(computerChoice);
 
+console.log(computerChoice[2]);
+
+for (var i = 0; i < computerChoice.length; i++) {
+  console.log(computerChoice.charAt(i));
+
+
+  if (computerChoice.charAt(i) !== " ") {
+
+  console.log(computerChoice.replace(new RegExp(computerChoice.charAt(i)), "_"))
+
+  }
+
+
+}
+
+
 
 
 
@@ -83,13 +99,21 @@ document.onkeyup = function(event) {
 
     //Problem: display the matches  (with underscore)
 
+    //create a 
+
+
+
 
     //Problem: logic for wins number 
+
+
 
 
   }else {
 
     console.log ("not matches");
+
+    
   }
 
 
