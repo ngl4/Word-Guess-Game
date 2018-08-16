@@ -5,25 +5,68 @@ var animeArr = [
   "Naruto",
   "Bleach",
   "Dragon Ball",
-  "Spirited Away",
+  "Your Name",
   "Ponyo",
   "Paprika",
-  "Akira",
-  "Ghost in the shell"
+  "Akira"
 ];
 
 var winNum = 0;
 var guessLeft = 12;
 
+
+
 var userGuessArr = []; //Aready guess letters
+
+
+
+//Global scope for computer choice to avoid any frequent changes with every keys pressed
+var computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
+//Anime Arr will be chosed by the computer of the specific items to be guessed
+
+console.log(computerChoice);
+
+
+
+
+
 
 document.onkeyup = function(event) {
   //the user clicks on a random key
   var userGuess = event.key; //??? how to make all user iput to be uppercase
 
-  //Anime Arr will be chosed by the computer of the specific items to be guessed
-  var computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
-  //???show all the items in uppercase
+  
+  console.log (userGuess);
+ 
+
+    //Problem----Condition: userGuess cannot be entered repetitively 
+
+
+ 
+
+
+
+  } 
+  
+  if (userGuess === computerChoice.includes(userGuess)) {   //includes will return true or false 
+
+    console.log("it matches!");
+    //display the matches 
+
+
+  }else {
+
+    console.log ("not matches");
+  }
+
+
+
+
+
+  
+
+
+  
 
   //display all userGuess into html
   userGuessArr.push(userGuess);
@@ -32,4 +75,15 @@ document.onkeyup = function(event) {
   ).textContent = userGuessArr.join(", ");
 
   //???how to access to a specific letters of the word ???? create another logic within ComputerChoice?
+
+
+
+
+  //Display all the results to HTML page
+
+  document.getElementById('guess-left').textContent = guessLeft;
+
+
+
+
 };
