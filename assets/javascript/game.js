@@ -67,7 +67,7 @@ document.onkeyup = function(event) {
     } 
 
   
-  if (userGuess === computerChoice.includes(userGuess)) {   //includes will return true or false 
+  if (computerChoice.includes(userGuess)) {   //includes will return true or false 
 
     console.log("it matches!");
     //display the matches 
