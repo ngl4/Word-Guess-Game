@@ -60,7 +60,9 @@ document.onkeyup = function(event) {
   
         userGuessArr = [];
         guessLeft = 12;
-        location.reload();
+        location.reload(); 
+        //reloading the page after 12 guesses are used up 
+        //computerChoice will be refreshed too with another new word 
         
         //Problem: Display the final answer even user cannot guess out the letter
 
