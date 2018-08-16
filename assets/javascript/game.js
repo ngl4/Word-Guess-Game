@@ -46,7 +46,26 @@ document.onkeyup = function(event) {
 
 
 
-  } 
+    if (userGuess !== computerChoice.includes(userGuess)) {
+
+
+      guessLeft -= 1; 
+  
+  
+      if (guessLeft === 0) {
+  
+        userGuessArr = [];
+        guessLeft = 12;
+        location.reload();
+        
+        //Let the user knows the answer 
+  
+      }
+  
+  
+  
+    } 
+
   
   if (userGuess === computerChoice.includes(userGuess)) {   //includes will return true or false 
 
