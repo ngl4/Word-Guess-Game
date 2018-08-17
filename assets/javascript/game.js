@@ -2,25 +2,21 @@
 //5. userGuess
 
 var animeArr = [
-  "Naruto",
-  "Bleach",
-  "Dragon Ball",
-  "Your Name",
-  "Ponyo",
-  "Paprika",
-  "Akira"
+  "naruto",
+  "bleach",
+  "dragon ball",
+  "your name",
+  "ponyo",
+  "paprika",
+  "akira"
 ];
 
 var winNum = 0;
 var guessLeft = 12;
 
-
-
 var userGuessArr = []; //Aready guess letters
 var computerChoiceDashes = [];
 var computerChoiceContainer = [];
-
-
 
 //Global scope for computer choice to avoid any frequent changes with every keys pressed
 var computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
@@ -28,36 +24,19 @@ var computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
 
 console.log(computerChoice);
 
+for (i = 0; i < computerChoice.length; i++) {
+  computerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g, "_"));
 
+  var displayDashes = computerChoiceDashes.join(" ");
+}
 
 
 
 for (i = 0; i < computerChoice.length; i++) {
-
-
-  computerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g , '_'));
-
-  var displayDashes = computerChoiceDashes.join(' ');
-
-
-
-}
-
-console.log(displayDashes);
-document.getElementById("word-guess").textContent = displayDashes;
-
-
-
-for (i = 0; i < computerChoice.length; i++) { 
-
-
   computerChoiceContainer.push(computerChoice[i]);
 
-  var displayLetters = computerChoiceContainer.join(' ');
-
+  var displayLetters = computerChoiceContainer.join(" ");
 }
-
-console.log (displayLetters[computerChoice.length]);
 
 
 
@@ -67,96 +46,69 @@ document.onkeyup = function(event) {
   //the user clicks on a random key
   var userGuess = event.key; //??? how to make all user iput to be uppercase
 
-  
-  console.log (userGuess);
- 
+  console.log(userGuess);
 
-    //Problem----Condition: userGuess cannot be entered repetitively 
-    //Solution -- using includes method to compare and return false to stop the keyon function working
 
-    if (userGuessArr.includes(userGuess)) {
 
-      return false;
+    //Displaying the Dashes
+    document.getElementById("word-guess").textContent = displayLetters;
+    document.getElementById("word-guess").textContent = displayDashes;
+    
+
+
+
+
+  //Problem----Condition: userGuess cannot be entered repetitively
+  //Solution -- using includes method to compare and return false to stop the keyon function working
+
+  if (userGuessArr.includes(userGuess)) {
+    return false;
+  }
+
+  if (userGuess !== computerChoice.includes(userGuess)) {
+    guessLeft -= 1;
+
+    if (guessLeft === 0) {
+      userGuessArr = [];
+      guessLeft = 12;
+      location.reload();
+      //reloading the page after 12 guesses are used up
+      //computerChoice will be refreshed too with another new word
+
+      //Problem: Display the final answer even user cannot guess out the letter
     }
- 
+  }
 
-
-
-    if (userGuess !== computerChoice.includes(userGuess)) {
-
-
-      guessLeft -= 1; 
-  
-  
-      if (guessLeft === 0) {
-  
-        userGuessArr = [];
-        guessLeft = 12;
-        location.reload(); 
-        //reloading the page after 12 guesses are used up 
-        //computerChoice will be refreshed too with another new word 
-        
-        //Problem: Display the final answer even user cannot guess out the letter
-
-
-
-  
-      }
-  
-  
-  
-    } 
-
-  
-  if (computerChoice.includes(userGuess)) {   //includes will return true or false 
+  if (computerChoice.includes(userGuess)) {
+    //includes will return true or false
 
     console.log("it matches!");
 
+    //Problem: display the matches  (with underscore)\
 
-    //Problem: display the matches  (with underscore)
+
 
     if (displayLetters.indexOf(userGuess)) {
 
-      console.log("FOUND! " + "the index is " + displayLetters.indexOf(userGuess));
-
-
-    }else {
-       
-      console.log("not found!");
-
-    }
+    // for (var i = 0; i < displayLetters.length; i++) {
 
     
+      console.log(displayLetters.charAt(displayLetters.indexOf(userGuess)));
+      
+      // }
+  
+    } else {
 
-    
-    if (userGuess === displayLetters[i] ) {
-
-      console.log(displayLetters [i]);
-
+      console.log("not found");
     }
 
 
 
-    //Problem: logic for wins number 
-
-
-
-
-  }else {
-
-    console.log ("not matches");
-
-    
+  
+    //Problem: logic for wins number
+  } else {
+    console.log("not matches");
   }
-
-
-
-
-
-  
-
-
-  
 
   //display all userGuess into html
   userGuessArr.push(userGuess);
@@ -164,18 +116,9 @@ document.onkeyup = function(event) {
     "letters-already-guess"
   ).textContent = userGuessArr.join(", ");
 
-  
-
-
   //Display guessLeft to html
 
-  document.getElementById('guess-left').textContent = guessLeft;
-
-
-
+  document.getElementById("guess-left").textContent = guessLeft;
 
   //Display Wins-number to html
-
-
-
 };
