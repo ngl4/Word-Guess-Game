@@ -32,39 +32,31 @@ console.log(computerChoice);
 
 
 
-
 for (i = 0; i < computerChoice.length; i++) {
 
 
   computerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g , '_'));
 
-  console.log(computerChoiceDashes.join(' '));
+  var displayDashes = computerChoiceDashes.join(' ');
 
 
 
 }
 
-for (i = 0; i < computerChoice.length; i++) {
+console.log(displayDashes);
+
+
+
+for (i = 0; i < computerChoice.length; i++) { 
 
 
   computerChoiceContainer.push(computerChoice[i]);
 
-  console.log(computerChoiceContainer.join(' '));
-
-
+  var displayLetters = computerChoiceContainer.join(' ');
 
 }
 
-
-
-
-
-
-
-
-
-
-
+console.log(displayLetters);
 
 
 
@@ -121,7 +113,7 @@ document.onkeyup = function(event) {
 
     //Problem: display the matches  (with underscore)
 
-    //create a 
+    
 
 
 
