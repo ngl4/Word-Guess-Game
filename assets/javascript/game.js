@@ -17,6 +17,7 @@ var guessLeft = 12;
 
 
 var userGuessArr = []; //Aready guess letters
+var computerChoiceDashes = [];
 var computerChoiceContainer = [];
 
 
@@ -27,7 +28,7 @@ var computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
 
 console.log(computerChoice);
 
-console.log(computerChoice[2]);
+
 
 
 
@@ -35,7 +36,18 @@ console.log(computerChoice[2]);
 for (i = 0; i < computerChoice.length; i++) {
 
 
-  computerChoiceContainer.push(computerChoice[i].replace(/[a-zA-Z]/g , '_'));
+  computerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g , '_'));
+
+  console.log(computerChoiceDashes.join(' '));
+
+
+
+}
+
+for (i = 0; i < computerChoice.length; i++) {
+
+
+  computerChoiceContainer.push(computerChoice[i]);
 
   console.log(computerChoiceContainer.join(' '));
 
@@ -45,11 +57,8 @@ for (i = 0; i < computerChoice.length; i++) {
 
 
 
-  // if (computerChoice[i] !== " ") {
 
-  // console.log(computerChoice.replace(new RegExp(computerChoice.charAt(i), "_")));
 
-  // }
 
 
 
