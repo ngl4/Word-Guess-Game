@@ -17,6 +17,7 @@ var guessLeft = 12;
 
 
 var userGuessArr = []; //Aready guess letters
+var computerChoiceContainer = [];
 
 
 
@@ -28,18 +29,30 @@ console.log(computerChoice);
 
 console.log(computerChoice[2]);
 
-for (var i = 0; i < computerChoice.length; i++) {
- 
 
 
-  if (computerChoice[i] !== " ") {
 
-  console.log(computerChoice.replace(new RegExp(computerChoice.charAt(i), "_")));
+for (i = 0; i < computerChoice.length; i++) {
 
-  }
+
+  computerChoiceContainer.push(computerChoice[i].replace(/[a-zA-Z]/g , '_'));
+
+  console.log(computerChoiceContainer.join(' '));
+
 
 
 }
+
+
+
+  // if (computerChoice[i] !== " ") {
+
+  // console.log(computerChoice.replace(new RegExp(computerChoice.charAt(i), "_")));
+
+  // }
+
+
+
 
 
 
