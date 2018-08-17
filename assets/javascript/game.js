@@ -29,12 +29,12 @@ console.log(computerChoice);
 console.log(computerChoice[2]);
 
 for (var i = 0; i < computerChoice.length; i++) {
-  console.log(computerChoice.charAt(i));
+ 
 
 
-  if (computerChoice.charAt(i) !== " ") {
+  if (computerChoice[i] !== " ") {
 
-  console.log(computerChoice.replace(new RegExp(computerChoice.charAt(i)), "_"))
+  console.log(computerChoice.replace(new RegExp(computerChoice.charAt(i), "_")));
 
   }
 
