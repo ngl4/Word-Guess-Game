@@ -44,6 +44,7 @@ for (i = 0; i < computerChoice.length; i++) {
 }
 
 console.log(displayDashes);
+document.getElementById("word-guess").textContent = displayDashes;
 
 
 
@@ -56,7 +57,8 @@ for (i = 0; i < computerChoice.length; i++) {
 
 }
 
-console.log(displayLetters);
+console.log (displayLetters[computerChoice.length]);
+
 
 
 
@@ -113,8 +115,25 @@ document.onkeyup = function(event) {
 
     //Problem: display the matches  (with underscore)
 
+    if (displayLetters.indexOf(userGuess)) {
+
+      console.log("FOUND! " + "the index is " + displayLetters.indexOf(userGuess));
+
+
+    }else {
+       
+      console.log("not found!");
+
+    }
+
     
 
+    
+    if (userGuess === displayLetters[i] ) {
+
+      console.log(displayLetters [i]);
+
+    }
 
 
 
@@ -151,6 +170,7 @@ document.onkeyup = function(event) {
   //Display guessLeft to html
 
   document.getElementById('guess-left').textContent = guessLeft;
+
 
 
 
