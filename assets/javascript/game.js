@@ -38,6 +38,12 @@ for (i = 0; i < computerChoice.length; i++) {
   var displayLetters = computerChoiceContainer.join(" ");
 }
 
+String.prototype.replaceAt=function(index, char) {
+  var a = this.split("");
+  a[index] = char;
+  return a.join("");
+}
+
 
 
 
@@ -84,29 +90,39 @@ document.onkeyup = function(event) {
 
     console.log("it matches!");
 
-    //Problem: display the matches  (with underscore)\
+    for (var i=0 ; i < displayLetters.length; i++) {
 
-
-
-    if (displayLetters.indexOf(userGuess)) {
-
-    // for (var i = 0; i < displayLetters.length; i++) {
-
-    
-      console.log(displayLetters.charAt(displayLetters.indexOf(userGuess)));
+      if (userGuess === displayLetters[i]) {
       
-      // }
-  
-    } else {
-
-      console.log("not found");
+          console.log(i);
+      
+          var char = displayLetters.charAt(i);
+      
+          displayDashes = displayDashes.replaceAt(i, char);
+      
+          document.getElementById("word-guess").textContent = displayDashes;
+      
+          
+      }
     }
 
 
 
+
+   
+
+
+
+
+
+}
+
+    
+
+
   
     //Problem: logic for wins number
-  } else {
+  else {
     console.log("not matches");
   }
 
