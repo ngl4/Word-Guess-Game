@@ -51,6 +51,18 @@ String.prototype.replaceAt=function(index, char) {
  document.getElementById("word-guess").textContent = displayDashes;
 
 
+//function for showing images 
+ function show_image(src, width, height, alt) {
+  var img = document.createElement("img");
+  img.src = src;
+  img.width = width;
+  img.height = height;
+  img.alt = alt;
+
+  // This next line will just add it to the <body> tag
+  document.getElementById('anime-image').appendChild(img);
+}
+
 
 
 
@@ -108,14 +120,29 @@ document.onkeyup = function(event) {
     //Problem: logic for wins number
     //Solution: when it displaydashes is filled up with displayLetters, the winNum will go up by 1;
     //And the page will reload again!
+
+   
+
+
+
     if (displayDashes === displayLetters) {
 
       winNum += 1;
-      location.reload();  
+
+      if ("n a r u t o"){
+
+        //????Problem: Not Displaying ---- solve image issue
+
+        show_image("./Word-Guess-Game/assets/images/naruto.jpg", 
+                     276, 
+                     110, 
+                     'Naruto'); 
+       }
+
+
+      //location.reload();  
       //Problem: page can reload but the winNum should not change ?????
 
-
-      
 
     }else {
 
