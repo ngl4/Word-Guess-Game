@@ -44,6 +44,10 @@ String.prototype.replaceAt=function(index, char) {
   return a.join("");
 }
 
+ //Displaying the Dashes
+    
+ document.getElementById("word-guess").textContent = displayDashes;
+
 
 
 
@@ -56,9 +60,7 @@ document.onkeyup = function(event) {
 
 
 
-    //Displaying the Dashes
-    document.getElementById("word-guess").textContent = displayLetters;
-    document.getElementById("word-guess").textContent = displayDashes;
+   
     
 
 
@@ -107,18 +109,7 @@ document.onkeyup = function(event) {
     }
 
 
-
-
-   
-
-
-
-
-
 }
-
-    
-
 
   
     //Problem: logic for wins number
