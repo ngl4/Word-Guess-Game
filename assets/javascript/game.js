@@ -63,6 +63,11 @@ String.prototype.replaceAt=function(index, char) {
   document.getElementById('anime-image').appendChild(img);
 }
 
+show_image("assets/images/naruto.jpg", 
+                     276, 
+                     110, 
+                     'Naruto'); 
+
 
 
 
@@ -129,15 +134,15 @@ document.onkeyup = function(event) {
 
       winNum += 1;
 
-      if ("n a r u t o"){
+      // if ("n a r u t o"){
 
-        //????Problem: Not Displaying ---- solve image issue
+      //   //????Problem: Not Displaying ---- solve image issue
 
-        show_image("./Word-Guess-Game/assets/images/naruto.jpg", 
-                     276, 
-                     110, 
-                     'Naruto'); 
-       }
+      //   show_image("./images/naruto.jpg", 
+      //                276, 
+      //                110, 
+      //                'Naruto'); 
+      //  }
 
 
       //location.reload();  
