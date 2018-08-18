@@ -38,14 +38,16 @@ for (i = 0; i < computerChoice.length; i++) {
   var displayLetters = computerChoiceContainer.join(" ");
 }
 
+
+//code extracted from stack overflow
 String.prototype.replaceAt=function(index, char) {
   var a = this.split("");
   a[index] = char;
   return a.join("");
 }
 
+
  //Displaying the Dashes
-    
  document.getElementById("word-guess").textContent = displayDashes;
 
 
@@ -57,13 +59,6 @@ document.onkeyup = function(event) {
   var userGuess = event.key; //??? how to make all user iput to be uppercase
 
   console.log(userGuess);
-
-
-
-   
-    
-
-
 
 
   //Problem----Condition: userGuess cannot be entered repetitively
@@ -88,10 +83,12 @@ document.onkeyup = function(event) {
   }
 
   if (computerChoice.includes(userGuess)) {
-    //includes will return true or false
+    //includes() will return true or false
 
     console.log("it matches!");
 
+
+    //displayDashes being replaced by the correct userGuess 
     for (var i=0 ; i < displayLetters.length; i++) {
 
       if (userGuess === displayLetters[i]) {
@@ -108,11 +105,26 @@ document.onkeyup = function(event) {
       }
     }
 
+    //Problem: logic for wins number
+    //Solution: when it displaydashes is filled up with displayLetters, the winNum will go up by 1;
+    //And the page will reload again!
+    if (displayDashes === displayLetters) {
+
+      winNum += 1;
+      location.reload();  
+      //Problem: page can reload but the winNum should not change ?????
+
+
+      
+
+    }else {
+
+
+    }
+
 
 }
-
-  
-    //Problem: logic for wins number
+    
   else {
     console.log("not matches");
   }
@@ -128,4 +140,5 @@ document.onkeyup = function(event) {
   document.getElementById("guess-left").textContent = guessLeft;
 
   //Display Wins-number to html
+  document.getElementById("win-num").textContent = winNum;
 };
