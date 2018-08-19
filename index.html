@@ -10,6 +10,33 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
 
+    <style>
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            /* Set the fixed height of the footer here */
+            line-height: 60px;
+            /* Vertically center the text there */
+            background-color: #E9ECEF;
+        }
+
+        body {
+
+            font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
+            background: url('images/grey_background.jpg');
+            margin-bottom: 60px;
+            
+
+        }
+    </style>
+
 </head>
 
 
@@ -22,7 +49,7 @@
             <header class="display-4 text-center">Anime Hangman Game</header>
             <p class="lead text-center">Press any key to get started!!!</p>
             <div class="text-center">
-                <img src="assets/images/guess.jpg" alt="front page image" height="179px" width="310px">
+                <img src="assets/images/guess.jpg" alt="front page image" height="200px" width="310px">
             </div>
 
         </div>
@@ -34,19 +61,19 @@
 
             <div class="col-md-6">
 
-                <p>Wins</p>
+                <p class="font-weight-bold">Wins</p>
 
                 <div id="win-num"></div>
 
-                <p>Current Word</p>
+                <p class="font-weight-bold">Current Word</p>
 
                 <div id="word-guess"></div>
 
-                <p>Number of Guesses Remaining </p>
+                <p class="font-weight-bold">Number of Guesses Remaining </p>
 
                 <div id="guess-left"></div>
 
-                <p>Letters Already Guesses</p>
+                <p class="font-weight-bold">Letters Already Guesses</p>
 
                 <div id="letters-already-guess"></div>
 
@@ -55,6 +82,17 @@
             <div id="anime-image" class="col-md-6">
 
             </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+
+        <div class="container-fluid text-secondary text-center" id="copyright">
+
+            Copyright &#169;
+
 
         </div>
 
