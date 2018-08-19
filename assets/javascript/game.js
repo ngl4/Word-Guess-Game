@@ -65,7 +65,33 @@ function show_image(src, width, height, alt) {
 var button = document.getElementById("myDiv");
 button.style.display = "none";
 
+button.addEventListener("click", playAgain);
 
+function playAgain() {
+
+  //remove a chosen computerChoice index from the array
+  var rmIndex = animeArr.indexOf(computerChoice);
+  animeArr.splice(rmIndex, 1);
+
+  //Randomly generate a new computerChoice
+  computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
+
+  for (i = 0; i < computerChoice.length; i++) {
+    computerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g, "_"));
+  
+    displayDashes = computerChoiceDashes.join(" ");
+  }
+  
+  for (i = 0; i < computerChoice.length; i++) {
+    computerChoiceContainer.push(computerChoice[i]);
+  
+    displayLetters = computerChoiceContainer.join(" ");
+  }
+
+  //hide the button 
+  button.style.display = "none";
+
+}
 //It is better to put all of these into a function --- a function: you can reuse it 
 
 //show the button once you win the game/ cannot guess the word 
@@ -83,9 +109,9 @@ button.style.display = "none";
 
 
 //setting time to be refreshed
-function timeRefresh(timeoutPeriod) {
-  setTimeout("location.reload(true);", timeoutPeriod);
-}
+// function timeRefresh(timeoutPeriod) {
+//   setTimeout("location.reload(true);", timeoutPeriod);
+// }
 
 document.onkeyup = function(event) {
   //the user clicks on a random key
@@ -106,8 +132,12 @@ document.onkeyup = function(event) {
     if (guessLeft === 0) {
       userGuessArr = [];
       guessLeft = 12;
+
+      //make button visible
+      button.style.display = "block";
+      playAgain();
       
-      //timeRefresh(5000*10);
+     
 
       if (userGuess !== computerChoice.includes(userGuess) && displayLetters === "n a r u t o") {
         show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
@@ -168,8 +198,10 @@ document.onkeyup = function(event) {
 
     if (displayDashes === displayLetters) {
       winNum += 1;
-      //timeRefresh(5000*10);
       
+      //make button visible
+      button.style.display = "block";
+      playAgain();
 
       //Problem: page can reload but the winNum should not change ?????
     }
