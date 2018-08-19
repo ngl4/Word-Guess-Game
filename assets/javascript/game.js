@@ -39,8 +39,8 @@ for (i = 0; i < computerChoice.length; i++) {
 }
 
 
-//code extracted from stack overflow
-String.prototype.replaceAt=function(index, char) {
+//replaceAt code extracted from stack overflow
+String.prototype.replaceAt = function(index, char) {
   var a = this.split("");
   a[index] = char;
   return a.join("");
@@ -51,7 +51,7 @@ String.prototype.replaceAt=function(index, char) {
  document.getElementById("word-guess").textContent = displayDashes;
 
 
-//function for showing images 
+//function for showing images using a suggestion from stack overflow 
  function show_image(src, width, height, alt) {
   var img = document.createElement("img");
   img.src = src;
@@ -59,15 +59,15 @@ String.prototype.replaceAt=function(index, char) {
   img.height = height;
   img.alt = alt;
 
-  // This next line will just add it to the <body> tag
+  // This next line will just add it to the <div> tag
   document.getElementById('anime-image').appendChild(img);
 }
 
-show_image("assets/images/naruto.jpg", 
-                     276, 
-                     110, 
-                     'Naruto'); 
 
+//setting time to be refreshed 
+function timeRefresh(timeoutPeriod) {
+  setTimeout("location.reload(true);", timeoutPeriod);
+}
 
 
 
@@ -115,7 +115,7 @@ document.onkeyup = function(event) {
           var char = displayLetters.charAt(i);
       
           displayDashes = displayDashes.replaceAt(i, char);
-      
+
           document.getElementById("word-guess").textContent = displayDashes;
       
           
@@ -127,27 +127,26 @@ document.onkeyup = function(event) {
     //And the page will reload again!
 
    
-
-
-
     if (displayDashes === displayLetters) {
 
       winNum += 1;
-
-      // if ("n a r u t o"){
-
-      //   //????Problem: Not Displaying ---- solve image issue
-
-      //   show_image("./images/naruto.jpg", 
-      //                276, 
-      //                110, 
-      //                'Naruto'); 
-      //  }
+      timeRefresh(5000*2);
+    }
 
 
-      //location.reload();  
+    if (displayDashes === displayLetters && displayLetters === "n a r u t o") {
+
+
+      show_image("assets/images/naruto.jpg", 
+                     376, 
+                     410, 
+                     'Naruto'); 
+
+
+      
+
+    
       //Problem: page can reload but the winNum should not change ?????
-
 
     }else {
 
