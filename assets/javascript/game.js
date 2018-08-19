@@ -61,6 +61,25 @@ function show_image(src, width, height, alt) {
   document.getElementById("anime-image").appendChild(img);
 }
 
+//Create a button
+var button = document.getElementById("myDiv");
+button.style.display = "none";
+
+
+//It is better to put all of these into a function --- a function: you can reuse it 
+
+//show the button once you win the game/ cannot guess the word 
+
+//get the Array and rm the word that the computerChoice has generated from the animeArr
+
+//get another random computerChoice (see above)
+
+//remove the image 
+
+//hide the button 
+
+//you then call the function when you win or when you used up all the guesses 
+
 
 
 //setting time to be refreshed
@@ -87,6 +106,7 @@ document.onkeyup = function(event) {
     if (guessLeft === 0) {
       userGuessArr = [];
       guessLeft = 12;
+      
       //timeRefresh(5000*10);
 
       if (userGuess !== computerChoice.includes(userGuess) && displayLetters === "n a r u t o") {
@@ -148,7 +168,8 @@ document.onkeyup = function(event) {
 
     if (displayDashes === displayLetters) {
       winNum += 1;
-      timeRefresh(5000*10);
+      //timeRefresh(5000*10);
+      
 
       //Problem: page can reload but the winNum should not change ?????
     }
