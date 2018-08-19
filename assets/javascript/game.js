@@ -59,9 +59,6 @@ function show_image(src, width, height, alt) {
   document.getElementById("anime-image").appendChild(img);
 }
 
-show_image("assets/images/guess.jpg",610, 376, "Front Page Image");
-
-
 
 //setting time to be refreshed
 function timeRefresh(timeoutPeriod) {
@@ -87,7 +84,35 @@ document.onkeyup = function(event) {
     if (guessLeft === 0) {
       userGuessArr = [];
       guessLeft = 12;
-      location.reload();
+      timeRefresh(8000);
+
+      if (displayLetters === "n a r u t o") {
+        show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
+      }else if (
+        displayLetters === "p o n y o"
+      ) {
+        show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
+      } else if (
+        displayLetters === "a k i r a"
+      ) {
+        show_image("assets/images/akira.jpg", 376, 410, "Akira");
+      } else if (
+        displayLetters === "y o u r   n a m e"
+      ) {
+        show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
+      } else if (
+        displayLetters === "b l e a c h"
+      ) {
+        show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
+      } else if (
+        displayLetters === "d r a g o n   b a l l"
+      ) {
+        show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
+      } else if (
+        displayLetters === "p a p r i k a"
+      ) {
+        show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
+      }
       //reloading the page after 12 guesses are used up
       //computerChoice will be refreshed too with another new word
 
@@ -119,7 +144,7 @@ document.onkeyup = function(event) {
 
     if (displayDashes === displayLetters) {
       winNum += 1;
-      timeRefresh(5000);
+      timeRefresh(8000);
 
       //Problem: page can reload but the winNum should not change ?????
     }
