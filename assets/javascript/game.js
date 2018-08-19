@@ -30,8 +30,6 @@ for (i = 0; i < computerChoice.length; i++) {
   var displayDashes = computerChoiceDashes.join(" ");
 }
 
-
-
 for (i = 0; i < computerChoice.length; i++) {
   computerChoiceContainer.push(computerChoice[i]);
 
@@ -44,15 +42,13 @@ String.prototype.replaceAt = function(index, char) {
   var a = this.split("");
   a[index] = char;
   return a.join("");
-}
+};
 
+//Displaying the Dashes
+document.getElementById("word-guess").textContent = displayDashes;
 
- //Displaying the Dashes
- document.getElementById("word-guess").textContent = displayDashes;
-
-
-//function for showing images using a suggestion from stack overflow 
- function show_image(src, width, height, alt) {
+//function for showing images using a suggestion from stack overflow
+function show_image(src, width, height, alt) {
   var img = document.createElement("img");
   img.src = src;
   img.width = width;
@@ -60,23 +56,23 @@ String.prototype.replaceAt = function(index, char) {
   img.alt = alt;
 
   // This next line will just add it to the <div> tag
-  document.getElementById('anime-image').appendChild(img);
+  document.getElementById("anime-image").appendChild(img);
 }
 
+show_image("assets/images/guess.jpg",610, 376, "Front Page Image");
 
-//setting time to be refreshed 
+
+
+//setting time to be refreshed
 function timeRefresh(timeoutPeriod) {
   setTimeout("location.reload(true);", timeoutPeriod);
 }
-
-
 
 document.onkeyup = function(event) {
   //the user clicks on a random key
   var userGuess = event.key; //??? how to make all user iput to be uppercase
 
   console.log(userGuess);
-
 
   //Problem----Condition: userGuess cannot be entered repetitively
   //Solution -- using includes method to compare and return false to stop the keyon function working
@@ -104,21 +100,16 @@ document.onkeyup = function(event) {
 
     console.log("it matches!");
 
-
-    //displayDashes being replaced by the correct userGuess 
-    for (var i=0 ; i < displayLetters.length; i++) {
-
+    //displayDashes being replaced by the correct userGuess
+    for (var i = 0; i < displayLetters.length; i++) {
       if (userGuess === displayLetters[i]) {
-      
-          console.log(i);
-      
-          var char = displayLetters.charAt(i);
-      
-          displayDashes = displayDashes.replaceAt(i, char);
+        console.log(i);
 
-          document.getElementById("word-guess").textContent = displayDashes;
-      
-          
+        var char = displayLetters.charAt(i);
+
+        displayDashes = displayDashes.replaceAt(i, char);
+
+        document.getElementById("word-guess").textContent = displayDashes;
       }
     }
 
@@ -126,37 +117,47 @@ document.onkeyup = function(event) {
     //Solution: when it displaydashes is filled up with displayLetters, the winNum will go up by 1;
     //And the page will reload again!
 
-   
     if (displayDashes === displayLetters) {
-
       winNum += 1;
-      timeRefresh(5000*2);
-    }
+      timeRefresh(5000);
 
+      //Problem: page can reload but the winNum should not change ?????
+    }
 
     if (displayDashes === displayLetters && displayLetters === "n a r u t o") {
-
-
-      show_image("assets/images/naruto.jpg", 
-                     376, 
-                     410, 
-                     'Naruto'); 
-
-
-      
-
-    
-      //Problem: page can reload but the winNum should not change ?????
-
-    }else {
-
-
+      show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
+    } else if (
+      displayDashes === displayLetters &&
+      displayLetters === "p o n y o"
+    ) {
+      show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
+    } else if (
+      displayDashes === displayLetters &&
+      displayLetters === "a k i r a"
+    ) {
+      show_image("assets/images/akira.jpg", 376, 410, "Akira");
+    } else if (
+      displayDashes === displayLetters &&
+      displayLetters === "y o u r   n a m e"
+    ) {
+      show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
+    } else if (
+      displayDashes === displayLetters &&
+      displayLetters === "b l e a c h"
+    ) {
+      show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
+    } else if (
+      displayDashes === displayLetters &&
+      displayLetters === "d r a g o n   b a l l"
+    ) {
+      show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
+    } else if (
+      displayDashes === displayLetters &&
+      displayLetters === "p a p r i k a"
+    ) {
+      show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
     }
-
-
-}
-    
-  else {
+  } else {
     console.log("not matches");
   }
 
