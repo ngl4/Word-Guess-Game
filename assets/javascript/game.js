@@ -18,6 +18,8 @@ var userGuessArr = []; //Aready guess letters
 var computerChoiceDashes = [];
 var computerChoiceContainer = [];
 
+var myMusic;
+
 //Global scope for computer choice to avoid any frequent changes with every keys pressed
 var computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
 //Anime Arr will be chosed by the computer of the specific items to be guessed
@@ -60,6 +62,7 @@ function show_image(src, width, height, alt) {
 }
 
 
+
 //setting time to be refreshed
 function timeRefresh(timeoutPeriod) {
   setTimeout("location.reload(true);", timeoutPeriod);
@@ -84,10 +87,11 @@ document.onkeyup = function(event) {
     if (guessLeft === 0) {
       userGuessArr = [];
       guessLeft = 12;
-      timeRefresh(8000);
+      timeRefresh(5000*10);
 
       if (displayLetters === "n a r u t o") {
         show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
+        
       }else if (
         displayLetters === "p o n y o"
       ) {
@@ -144,13 +148,14 @@ document.onkeyup = function(event) {
 
     if (displayDashes === displayLetters) {
       winNum += 1;
-      timeRefresh(8000);
+      timeRefresh(5000*10);
 
       //Problem: page can reload but the winNum should not change ?????
     }
 
     if (displayDashes === displayLetters && displayLetters === "n a r u t o") {
       show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
+      
     } else if (
       displayDashes === displayLetters &&
       displayLetters === "p o n y o"
