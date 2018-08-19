@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anime-Word-Guess-Game</title>
     <!-- Link to Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
 
 </head>
 
 
 <body>
 
-    <h1>Anime Hangman</h1>
+    <div class="jumbotron jumbotron-fluid">
 
-    <div>
-        <img src = "assets/images/guess.jpg" alt="front page image" height="179px" width="310px"> 
+        <div class="container">
+
+            <header class="display-4 text-center">Anime Hangman Game</header>
+            <p class="lead text-center">Press any key to get started!!!</p>
+            <div class="text-center">
+                <img src="assets/images/guess.jpg" alt="front page image" height="179px" width="310px">
+            </div>
+
+        </div>
     </div>
 
-    <p>Press any key to get started!!!</p>
+    <div class="container">
 
-    <p>Wins</p>
+        <div class="row">
 
-    <div id="win-num"></div>
+            <div class="col-md-6">
 
-    <p>Current Word</p>
+                <p>Wins</p>
 
-    <div id="word-guess"></div>
+                <div id="win-num"></div>
 
-    <p>Number of Guesses Remaining </p>
+                <p>Current Word</p>
 
-    <div id="guess-left"></div>
+                <div id="word-guess"></div>
 
-    <p>Letters Already Guesses</p>
+                <p>Number of Guesses Remaining </p>
 
-    <div id="letters-already-guess"></div>
-    
-    <div id="anime-image">
-        
+                <div id="guess-left"></div>
+
+                <p>Letters Already Guesses</p>
+
+                <div id="letters-already-guess"></div>
+
+            </div>
+
+            <div id="anime-image" class="col-md-6">
+
+            </div>
+
+        </div>
+
     </div>
 
     <script src="assets/javascript/game.js"></script>
 </body>
+
 </html>
