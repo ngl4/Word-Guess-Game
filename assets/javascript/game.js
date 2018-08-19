@@ -87,9 +87,9 @@ document.onkeyup = function(event) {
     if (guessLeft === 0) {
       userGuessArr = [];
       guessLeft = 12;
-      timeRefresh(5000*10);
+      //timeRefresh(5000*10);
 
-      if (displayLetters === "n a r u t o") {
+      if (userGuess !== computerChoice.includes(userGuess) && displayLetters === "n a r u t o") {
         show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
         
       }else if (
