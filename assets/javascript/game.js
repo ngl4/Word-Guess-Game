@@ -18,7 +18,12 @@ var userGuessArr = []; //Aready guess letters
 var computerChoiceDashes = [];
 var computerChoiceContainer = [];
 
-var myMusic;
+
+function playSong (url) {
+  var audio = new Audio();
+  audio.src = url;
+  audio.play();
+}
 
 //Global scope for computer choice to avoid any frequent changes with every keys pressed
 var computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
@@ -110,10 +115,15 @@ function playAgain() {
 
 //you then call the function when you win or when you used up all the guesses
 
+
+
+
 //setting time to be refreshed
-// function timeRefresh(timeoutPeriod) {
-//   setTimeout("location.reload(true);", timeoutPeriod);
-// }
+function timeRefresh(timeoutPeriod) {
+  setTimeout("location.reload(true);", timeoutPeriod);
+}
+
+
 
 document.onkeyup = function(event) {
   //the user clicks on a random key
@@ -134,6 +144,7 @@ document.onkeyup = function(event) {
     if (guessLeft === 0) {
       guessLeft = 12;
       userGuessArr = [];
+      location.reload();
     }
 
       //reloading the page after 12 guesses are used up
@@ -143,6 +154,7 @@ document.onkeyup = function(event) {
 
       //make button visible
       //button.style.display = "block";
+      
     }
   
 
@@ -176,20 +188,24 @@ document.onkeyup = function(event) {
 
       //make button visible
       //button.style.display = "block";
+      timeRefresh(5000*3);
 
       //Problem: page can reload but the winNum should not change ?????
     }
 
     if (displayDashes === "n a r u t o") {
       show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
+      playSong ("assets/music/naruto.mp3");
     } else if (
       displayDashes === "p o n y o"
     ) {
       show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
+      playSong("assets/music/ponyo.mp3");
     } else if (
       displayDashes === "a k i r a"
     ) {
       show_image("assets/images/akira.jpg", 376, 410, "Akira");
+      playSong("assets/music/akira.mp3");
     } else if (
       displayDashes === "y o u r   n a m e"
     ) {
@@ -198,10 +214,12 @@ document.onkeyup = function(event) {
       displayDashes === "b l e a c h"
     ) {
       show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
+      playSong("assets/music/bleach.mp3");
     } else if (
       displayDashes === "d r a g o n   b a l l"
     ) {
       show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
+      playSong("assets/music/dragonball.mp3");
     } else if (
       displayDashes === "p a p r i k a"
     ) {
