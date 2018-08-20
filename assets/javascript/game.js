@@ -76,6 +76,11 @@ function playAgain() {
   ComputerChoiceDashes = [];
   ComputerChoiceContainer = [];
 
+  guessLeft = 12;
+  if (guessLeft === 11){
+    userGuessArr = []; 
+    }
+
   //remove a chosen computerChoice index from the array
   var rmIndex = animeArr.indexOf(computerChoice);
   animeArr.splice(rmIndex, 1);
@@ -143,7 +148,7 @@ document.onkeyup = function(event) {
 
     if (guessLeft === 0) {
       guessLeft = 12;
-      userGuessArr = [];
+      userGuessArr =[];
 
       if (displayLetters === "n a r u t o") {
         show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
@@ -162,6 +167,7 @@ document.onkeyup = function(event) {
         displayLetters === "y o u r   n a m e"
       ) {
         show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
+        playSong("assets/music/yourname.mp3");
       } else if (
         displayLetters === "b l e a c h"
       ) {
@@ -176,6 +182,7 @@ document.onkeyup = function(event) {
         displayLetters === "p a p r i k a"
       ) {
         show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
+        playSong("assets/music/paprika.mp3");
       }
 
       timeRefresh(5000*3);
@@ -221,8 +228,10 @@ document.onkeyup = function(event) {
     if (displayDashes === displayLetters) {
       winNum += 1;
       guessLeft = 12;
-      userGuessArr = [];
-
+      
+   
+      userGuessArr = []; //issue of pushing the last letter to a new empty array
+      
 
       //make button visible
       //button.style.display = "block";
@@ -248,6 +257,7 @@ document.onkeyup = function(event) {
       displayDashes === "y o u r   n a m e"
     ) {
       show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
+      playSong("assets/music/yourname.mp3")
     } else if (
       displayDashes === "b l e a c h"
     ) {
@@ -262,6 +272,7 @@ document.onkeyup = function(event) {
       displayDashes === "p a p r i k a"
     ) {
       show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
+      playSong("assets/music/paprika.mp3");
     }
   } else {
     console.log("not matches");
