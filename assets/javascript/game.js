@@ -144,8 +144,46 @@ document.onkeyup = function(event) {
     if (guessLeft === 0) {
       guessLeft = 12;
       userGuessArr = [];
-      location.reload();
+
+      if (displayLetters === "n a r u t o") {
+        show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
+        playSong ("assets/music/naruto.mp3");
+      } else if (
+        displayLetters === "p o n y o"
+      ) {
+        show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
+        playSong("assets/music/ponyo.mp3");
+      } else if (
+        displayLetters === "a k i r a"
+      ) {
+        show_image("assets/images/akira.jpg", 376, 410, "Akira");
+        playSong("assets/music/akira.mp3");
+      } else if (
+        displayLetters === "y o u r   n a m e"
+      ) {
+        show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
+      } else if (
+        displayLetters === "b l e a c h"
+      ) {
+        show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
+        playSong("assets/music/bleach.mp3");
+      } else if (
+        displayLetters === "d r a g o n   b a l l"
+      ) {
+        show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
+        playSong("assets/music/dragonball.mp3");
+      } else if (
+        displayLetters === "p a p r i k a"
+      ) {
+        show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
+      }
+
+      timeRefresh(5000*3);
+
+      
     }
+
+
 
       //reloading the page after 12 guesses are used up
       //computerChoice will be refreshed too with another new word
