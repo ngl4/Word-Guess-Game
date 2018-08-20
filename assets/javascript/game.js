@@ -38,6 +38,8 @@ for (i = 0; i < computerChoice.length; i++) {
   var displayLetters = computerChoiceContainer.join(" ");
 }
 
+//Displaying the Dashes
+document.getElementById("word-guess").textContent = displayDashes;
 
 //replaceAt code extracted from stack overflow
 String.prototype.replaceAt = function(index, char) {
@@ -45,9 +47,6 @@ String.prototype.replaceAt = function(index, char) {
   a[index] = char;
   return a.join("");
 };
-
-//Displaying the Dashes
-document.getElementById("word-guess").textContent = displayDashes;
 
 //function for showing images using a suggestion from stack overflow
 function show_image(src, width, height, alt) {
@@ -64,10 +63,13 @@ function show_image(src, width, height, alt) {
 //Create a button
 var button = document.getElementById("myDiv");
 button.style.display = "none";
-
-button.addEventListener("click", playAgain);
+button.onclick = playAgain;
 
 function playAgain() {
+  
+
+  ComputerChoiceDashes = [];
+  ComputerChoiceContainer = [];
 
   //remove a chosen computerChoice index from the array
   var rmIndex = animeArr.indexOf(computerChoice);
@@ -77,36 +79,36 @@ function playAgain() {
   computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
 
   for (i = 0; i < computerChoice.length; i++) {
-    computerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g, "_"));
-  
+    ComputerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g, "_"));
+
     displayDashes = computerChoiceDashes.join(" ");
   }
-  
+
   for (i = 0; i < computerChoice.length; i++) {
-    computerChoiceContainer.push(computerChoice[i]);
-  
+    ComputerChoiceContainer.push(computerChoice[i]);
+
     displayLetters = computerChoiceContainer.join(" ");
   }
 
-  //hide the button 
+  //Displaying the Dashes
+  document.getElementById("word-guess").textContent = displayDashes;
+
+  //hide the button & image
   button.style.display = "none";
-
 }
-//It is better to put all of these into a function --- a function: you can reuse it 
+//It is better to put all of these into a function --- a function: you can reuse it
 
-//show the button once you win the game/ cannot guess the word 
+//show the button once you win the game/ cannot guess the word
 
 //get the Array and rm the word that the computerChoice has generated from the animeArr
 
 //get another random computerChoice (see above)
 
-//remove the image 
+//remove the image
 
-//hide the button 
+//hide the button
 
-//you then call the function when you win or when you used up all the guesses 
-
-
+//you then call the function when you win or when you used up all the guesses
 
 //setting time to be refreshed
 // function timeRefresh(timeoutPeriod) {
@@ -130,49 +132,19 @@ document.onkeyup = function(event) {
     guessLeft -= 1;
 
     if (guessLeft === 0) {
-      userGuessArr = [];
       guessLeft = 12;
+      userGuessArr = [];
+    }
 
-      //make button visible
-      button.style.display = "block";
-      playAgain();
-      
-     
-
-      if (userGuess !== computerChoice.includes(userGuess) && displayLetters === "n a r u t o") {
-        show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
-        
-      }else if (
-        displayLetters === "p o n y o"
-      ) {
-        show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
-      } else if (
-        displayLetters === "a k i r a"
-      ) {
-        show_image("assets/images/akira.jpg", 376, 410, "Akira");
-      } else if (
-        displayLetters === "y o u r   n a m e"
-      ) {
-        show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
-      } else if (
-        displayLetters === "b l e a c h"
-      ) {
-        show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
-      } else if (
-        displayLetters === "d r a g o n   b a l l"
-      ) {
-        show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
-      } else if (
-        displayLetters === "p a p r i k a"
-      ) {
-        show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
-      }
       //reloading the page after 12 guesses are used up
       //computerChoice will be refreshed too with another new word
 
       //Problem: Display the final answer even user cannot guess out the letter
+
+      //make button visible
+      //button.style.display = "block";
     }
-  }
+  
 
   if (computerChoice.includes(userGuess)) {
     //includes() will return true or false
@@ -198,45 +170,40 @@ document.onkeyup = function(event) {
 
     if (displayDashes === displayLetters) {
       winNum += 1;
-      
+      guessLeft = 12;
+      userGuessArr = [];
+
+
       //make button visible
-      button.style.display = "block";
-      playAgain();
+      //button.style.display = "block";
 
       //Problem: page can reload but the winNum should not change ?????
     }
 
-    if (displayDashes === displayLetters && displayLetters === "n a r u t o") {
+    if (displayDashes === "n a r u t o") {
       show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
-      
     } else if (
-      displayDashes === displayLetters &&
-      displayLetters === "p o n y o"
+      displayDashes === "p o n y o"
     ) {
       show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
     } else if (
-      displayDashes === displayLetters &&
-      displayLetters === "a k i r a"
+      displayDashes === "a k i r a"
     ) {
       show_image("assets/images/akira.jpg", 376, 410, "Akira");
     } else if (
-      displayDashes === displayLetters &&
-      displayLetters === "y o u r   n a m e"
+      displayDashes === "y o u r   n a m e"
     ) {
       show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
     } else if (
-      displayDashes === displayLetters &&
-      displayLetters === "b l e a c h"
+      displayDashes === "b l e a c h"
     ) {
       show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
     } else if (
-      displayDashes === displayLetters &&
-      displayLetters === "d r a g o n   b a l l"
+      displayDashes === "d r a g o n   b a l l"
     ) {
       show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
     } else if (
-      displayDashes === displayLetters &&
-      displayLetters === "p a p r i k a"
+      displayDashes === "p a p r i k a"
     ) {
       show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
     }
@@ -245,10 +212,15 @@ document.onkeyup = function(event) {
   }
 
   //display all userGuess into html
+
+ 
+
   userGuessArr.push(userGuess);
   document.getElementById(
     "letters-already-guess"
   ).textContent = userGuessArr.join(", ");
+
+
 
   //Display guessLeft to html
 
