@@ -18,10 +18,16 @@ var userGuessArr = []; //Aready guess letters
 var computerChoiceDashes = [];
 var computerChoiceContainer = [];
 
+var audio = new Audio();
+
 function playSong(url) {
-  var audio = new Audio();
   audio.src = url;
   audio.play();
+}
+
+function pauseSong(url) { 
+  audio.src = url;
+  audio.pause(); 
 }
 
 //Global scope for computer choice to avoid any frequent changes with every keys pressed
@@ -68,14 +74,9 @@ function show_image(src, width, height, style, alt) {
   console.log(img);
 }
 
-// function remove_image() {
 
-//   document.getElementById("anime-image").removeChild(img);
-  
-//}
-
-//Create a button
-var button = document.getElementById("myDiv");
+//Create a button TryAgain
+var button = document.getElementById("tryAgain");
 button.style.display = "none";
 button.onclick = tryAgain;
 
@@ -89,14 +90,70 @@ function tryAgain() {
   animeArr.splice(rmIndex, 1);
   console.log(animeArr);
 
-   //Problem: Remove Img and song 
-   if (computerChoice === "naruto" || computerChoice === "ponyo" || computerChoice === "bleach" || computerChoice === "your name" || 
-  computerChoice === "dragon ball" || computerChoice === "akira" || computerChoice === "paprika") {
+   //Remove Image
+   if (computerChoice === "naruto") {
 
     while (imgElement.firstChild) {
       imgElement.removeChild(imgElement.firstChild);
+      
     }
 
+    pauseSong("assets/music/naruto.mp3");
+
+   }else if (computerChoice === "ponyo" ) {
+
+    while (imgElement.firstChild) {
+      imgElement.removeChild(imgElement.firstChild);
+      
+    }
+
+    pauseSong("assets/music/ponyo.mp3");
+
+   }else if (computerChoice === "bleach" ) {
+
+    while (imgElement.firstChild) {
+      imgElement.removeChild(imgElement.firstChild);
+      
+    }
+
+    pauseSong("assets/music/bleach.mp3");
+
+   }else if (computerChoice === "your name" ) {
+
+    while (imgElement.firstChild) {
+      imgElement.removeChild(imgElement.firstChild);
+      
+    }
+
+    pauseSong("assets/music/yourname.mp3");
+    
+   }else if (computerChoice === "dragon ball" ) {
+
+    while (imgElement.firstChild) {
+      imgElement.removeChild(imgElement.firstChild);
+      
+    }
+
+    pauseSong("assets/music/dragonball.mp3");
+    
+   }else if (computerChoice === "akira" ) {
+
+    while (imgElement.firstChild) {
+      imgElement.removeChild(imgElement.firstChild);
+      
+    }
+
+    pauseSong("assets/music/akira.mp3");
+    
+   }else if (computerChoice === "paprika" ) {
+
+    while (imgElement.firstChild) {
+      imgElement.removeChild(imgElement.firstChild);
+      
+    }
+
+    pauseSong("assets/music/paprika.mp3");
+    
    }
 
   //Randomly generate a new computerChoice
@@ -128,6 +185,20 @@ function tryAgain() {
 }
 
 
+//Create a button playAgain
+var buttonRestart = document.getElementById("restartAgain");
+buttonRestart.style.display = "none";
+buttonRestart.onclick = restartAgain;
+
+function restartAgain () {
+
+  location.reload(); 
+
+}
+
+
+
+
 //setting time to be refreshed
 // function timeRefresh(timeoutPeriod) {
 //   setTimeout("location.reload(true);", timeoutPeriod);
@@ -156,25 +227,25 @@ document.onkeyup = function(event) {
 
       if (displayLetters === "n a r u t o") {
         show_image("assets/images/naruto.jpg", 376, 410, "display: block;", "Naruto");
-        //playSong("assets/music/naruto.mp3");
+        playSong("assets/music/naruto.mp3");
       } else if (displayLetters === "p o n y o") {
         show_image("assets/images/ponyo.jpeg", 376, 510, "display: block;", "Ponyo");
-        //playSong("assets/music/ponyo.mp3");
+        playSong("assets/music/ponyo.mp3");
       } else if (displayLetters === "a k i r a") {
         show_image("assets/images/akira.jpg", 376, 410, "display: block;", "Akira");
-        //playSong("assets/music/akira.mp3");
+        playSong("assets/music/akira.mp3");
       } else if (displayLetters === "y o u r   n a m e") {
         show_image("assets/images/yourname.jpg", 376, 580, "display: block;", "Your Name");
-        //playSong("assets/music/yourname.mp3");
+        playSong("assets/music/yourname.mp3");
       } else if (displayLetters === "b l e a c h") {
         show_image("assets/images/bleach.jpg", 376, 510, "display: block;", "Bleach");
-        //playSong("assets/music/bleach.mp3");
+        playSong("assets/music/bleach.mp3");
       } else if (displayLetters === "d r a g o n   b a l l") {
         show_image("assets/images/dragonball.jpg", 376, 450, "display: block;", "Dragon Ball");
-        //playSong("assets/music/dragonball.mp3");
+        playSong("assets/music/dragonball.mp3");
       } else if (displayLetters === "p a p r i k a") {
         show_image("assets/images/paprika.jpg", 376, 510, "display: block;", "Paprika");
-        //playSong("assets/music/paprika.mp3");
+        playSong("assets/music/paprika.mp3");
       }
 
       //timeRefresh(5000 * 3);
@@ -187,6 +258,7 @@ document.onkeyup = function(event) {
 
     //make button visible
     button.style.display = "block";
+    buttonRestart.style.display = "block";
   }
 
   if (computerChoice.includes(userGuess)) {
@@ -221,6 +293,7 @@ document.onkeyup = function(event) {
 
       //make button visible
       button.style.display = "block";
+      buttonRestart.style.display = "block";
       //timeRefresh(5000*3);
 
       //Problem: page can reload but the winNum should not change ?????
@@ -228,25 +301,25 @@ document.onkeyup = function(event) {
 
     if (displayDashes === "n a r u t o") {
       show_image("assets/images/naruto.jpg", 376, 410, "display: block;","Naruto");
-      //playSong ("assets/music/naruto.mp3");
+      playSong ("assets/music/naruto.mp3");
     } else if (displayDashes === "p o n y o") {
       show_image("assets/images/ponyo.jpeg", 376, 510, "display: block;","Ponyo");
-      //playSong("assets/music/ponyo.mp3");
+      playSong("assets/music/ponyo.mp3");
     } else if (displayDashes === "a k i r a") {
       show_image("assets/images/akira.jpg", 376, 410, "display: block;","Akira");
-      //playSong("assets/music/akira.mp3");
+      playSong("assets/music/akira.mp3");
     } else if (displayDashes === "y o u r   n a m e") {
       show_image("assets/images/yourname.jpg", 376, 580, "display: block;","Your Name");
-      //playSong("assets/music/yourname.mp3")
+      playSong("assets/music/yourname.mp3")
     } else if (displayDashes === "b l e a c h") {
       show_image("assets/images/bleach.jpg", 376, 510, "display: block;","Bleach");
-      //playSong("assets/music/bleach.mp3");
+      playSong("assets/music/bleach.mp3");
     } else if (displayDashes === "d r a g o n   b a l l") {
       show_image("assets/images/dragonball.jpg", 376, 450, "display: block;","Dragon Ball");
-      //playSong("assets/music/dragonball.mp3");
+      playSong("assets/music/dragonball.mp3");
     } else if (displayDashes === "p a p r i k a") {
       show_image("assets/images/paprika.jpg", 376, 510, "display: block;","Paprika");
-      //playSong("assets/music/paprika.mp3");
+      playSong("assets/music/paprika.mp3");
     }
   } else {
     console.log("not matches");
