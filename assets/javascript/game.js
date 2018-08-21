@@ -52,17 +52,27 @@ String.prototype.replaceAt = function(index, char) {
   return a.join("");
 };
 
+var imgElement = document.getElementById("anime-image");
+
 //function for showing images using a suggestion from stack overflow
-function show_image(src, width, height, alt) {
+function show_image(src, width, height, style, alt) {
   var img = document.createElement("img");
   img.src = src;
   img.width = width;
   img.height = height;
+  img.style = style;
   img.alt = alt;
-
+  
   // This next line will just add it to the <div> tag
   document.getElementById("anime-image").appendChild(img);
+  console.log(img);
 }
+
+// function remove_image() {
+
+//   document.getElementById("anime-image").removeChild(img);
+  
+//}
 
 //Create a button
 var button = document.getElementById("myDiv");
@@ -78,6 +88,16 @@ function tryAgain() {
   var rmIndex = animeArr.indexOf(computerChoice);
   animeArr.splice(rmIndex, 1);
   console.log(animeArr);
+
+   //Problem: Remove Img and song 
+   if (computerChoice === "naruto" || computerChoice === "ponyo" || computerChoice === "bleach" || computerChoice === "your name" || 
+  computerChoice === "dragon ball" || computerChoice === "akira" || computerChoice === "paprika") {
+
+    while (imgElement.firstChild) {
+      imgElement.removeChild(imgElement.firstChild);
+    }
+
+   }
 
   //Randomly generate a new computerChoice
   computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
@@ -100,8 +120,8 @@ function tryAgain() {
 
   document.getElementById("word-guess").textContent = displayDashes;
 
-  //Problem: Remove Img 
-  
+ 
+
 
   //hide the button & image
   button.style.display = "none";
@@ -135,25 +155,25 @@ document.onkeyup = function(event) {
       userGuessArr = [];
 
       if (displayLetters === "n a r u t o") {
-        show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
+        show_image("assets/images/naruto.jpg", 376, 410, "display: block;", "Naruto");
         //playSong("assets/music/naruto.mp3");
       } else if (displayLetters === "p o n y o") {
-        show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
+        show_image("assets/images/ponyo.jpeg", 376, 510, "display: block;", "Ponyo");
         //playSong("assets/music/ponyo.mp3");
       } else if (displayLetters === "a k i r a") {
-        show_image("assets/images/akira.jpg", 376, 410, "Akira");
+        show_image("assets/images/akira.jpg", 376, 410, "display: block;", "Akira");
         //playSong("assets/music/akira.mp3");
       } else if (displayLetters === "y o u r   n a m e") {
-        show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
+        show_image("assets/images/yourname.jpg", 376, 580, "display: block;", "Your Name");
         //playSong("assets/music/yourname.mp3");
       } else if (displayLetters === "b l e a c h") {
-        show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
+        show_image("assets/images/bleach.jpg", 376, 510, "display: block;", "Bleach");
         //playSong("assets/music/bleach.mp3");
       } else if (displayLetters === "d r a g o n   b a l l") {
-        show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
+        show_image("assets/images/dragonball.jpg", 376, 450, "display: block;", "Dragon Ball");
         //playSong("assets/music/dragonball.mp3");
       } else if (displayLetters === "p a p r i k a") {
-        show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
+        show_image("assets/images/paprika.jpg", 376, 510, "display: block;", "Paprika");
         //playSong("assets/music/paprika.mp3");
       }
 
@@ -207,25 +227,25 @@ document.onkeyup = function(event) {
     }
 
     if (displayDashes === "n a r u t o") {
-      show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
+      show_image("assets/images/naruto.jpg", 376, 410, "display: block;","Naruto");
       //playSong ("assets/music/naruto.mp3");
     } else if (displayDashes === "p o n y o") {
-      show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
+      show_image("assets/images/ponyo.jpeg", 376, 510, "display: block;","Ponyo");
       //playSong("assets/music/ponyo.mp3");
     } else if (displayDashes === "a k i r a") {
-      show_image("assets/images/akira.jpg", 376, 410, "Akira");
+      show_image("assets/images/akira.jpg", 376, 410, "display: block;","Akira");
       //playSong("assets/music/akira.mp3");
     } else if (displayDashes === "y o u r   n a m e") {
-      show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
+      show_image("assets/images/yourname.jpg", 376, 580, "display: block;","Your Name");
       //playSong("assets/music/yourname.mp3")
     } else if (displayDashes === "b l e a c h") {
-      show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
+      show_image("assets/images/bleach.jpg", 376, 510, "display: block;","Bleach");
       //playSong("assets/music/bleach.mp3");
     } else if (displayDashes === "d r a g o n   b a l l") {
-      show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
+      show_image("assets/images/dragonball.jpg", 376, 450, "display: block;","Dragon Ball");
       //playSong("assets/music/dragonball.mp3");
     } else if (displayDashes === "p a p r i k a") {
-      show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
+      show_image("assets/images/paprika.jpg", 376, 510, "display: block;","Paprika");
       //playSong("assets/music/paprika.mp3");
     }
   } else {
@@ -234,14 +254,9 @@ document.onkeyup = function(event) {
 
   //display all userGuess into html
 
-
-
-
   document.getElementById(
     "letters-already-guess"
   ).textContent = userGuessArr.join(", ");
-
-
 
   //Display guessLeft to html
 
