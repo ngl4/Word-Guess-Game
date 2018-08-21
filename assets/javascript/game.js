@@ -25,9 +25,9 @@ function playSong(url) {
   audio.play();
 }
 
-function pauseSong(url) { 
+function pauseSong(url) {
   audio.src = url;
-  audio.pause(); 
+  audio.pause();
 }
 
 //Global scope for computer choice to avoid any frequent changes with every keys pressed
@@ -68,18 +68,16 @@ function show_image(src, width, height, style, alt) {
   img.height = height;
   img.style = style;
   img.alt = alt;
-  
+
   // This next line will just add it to the <div> tag
   document.getElementById("anime-image").appendChild(img);
   console.log(img);
 }
 
-
 //Create a button TryAgain
 var button = document.getElementById("tryAgain");
 button.style.display = "none";
 button.onclick = tryAgain;
-
 
 //tryAgain function is to generate a new word that is different from the previous computerChoice
 function tryAgain() {
@@ -90,71 +88,50 @@ function tryAgain() {
   animeArr.splice(rmIndex, 1);
   console.log(animeArr);
 
-   //Remove Image
-   if (computerChoice === "naruto") {
-
+  //Remove Image
+  if (computerChoice === "naruto") {
     while (imgElement.firstChild) {
       imgElement.removeChild(imgElement.firstChild);
-      
     }
 
     pauseSong("assets/music/naruto.mp3");
-
-   }else if (computerChoice === "ponyo" ) {
-
+  } else if (computerChoice === "ponyo") {
     while (imgElement.firstChild) {
       imgElement.removeChild(imgElement.firstChild);
-      
     }
 
     pauseSong("assets/music/ponyo.mp3");
-
-   }else if (computerChoice === "bleach" ) {
-
+  } else if (computerChoice === "bleach") {
     while (imgElement.firstChild) {
       imgElement.removeChild(imgElement.firstChild);
-      
     }
 
     pauseSong("assets/music/bleach.mp3");
-
-   }else if (computerChoice === "your name" ) {
-
+  } else if (computerChoice === "your name") {
     while (imgElement.firstChild) {
       imgElement.removeChild(imgElement.firstChild);
-      
     }
 
     pauseSong("assets/music/yourname.mp3");
-    
-   }else if (computerChoice === "dragon ball" ) {
-
+  } else if (computerChoice === "dragon ball") {
     while (imgElement.firstChild) {
       imgElement.removeChild(imgElement.firstChild);
-      
     }
 
     pauseSong("assets/music/dragonball.mp3");
-    
-   }else if (computerChoice === "akira" ) {
-
+  } else if (computerChoice === "akira") {
     while (imgElement.firstChild) {
       imgElement.removeChild(imgElement.firstChild);
-      
     }
 
     pauseSong("assets/music/akira.mp3");
-    
-   }else if (computerChoice === "paprika" ) {
-
+  } else if (computerChoice === "paprika") {
     while (imgElement.firstChild) {
       imgElement.removeChild(imgElement.firstChild);
-      
     }
 
     pauseSong("assets/music/paprika.mp3");
-    
-   }
+  }
 
   //Randomly generate a new computerChoice
   computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
@@ -165,53 +142,39 @@ function tryAgain() {
 
   for (i = 0; i < computerChoice.length; i++) {
     computerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g, "_"));
-  
+
     displayDashes = computerChoiceDashes.join(" ");
   }
-  
+
   for (i = 0; i < computerChoice.length; i++) {
     computerChoiceContainer.push(computerChoice[i]);
-  
+
     displayLetters = computerChoiceContainer.join(" ");
   }
 
   document.getElementById("word-guess").textContent = displayDashes;
 
- 
-
-
   //hide the button & image
   button.style.display = "none";
 }
-
 
 //Create a button playAgain
 var buttonRestart = document.getElementById("restartAgain");
 buttonRestart.style.display = "none";
 buttonRestart.onclick = restartAgain;
 
-function restartAgain () {
-
-  location.reload(); 
-
+function restartAgain() {
+  location.reload();
 }
 
-
-
-
-//setting time to be refreshed
-// function timeRefresh(timeoutPeriod) {
-//   setTimeout("location.reload(true);", timeoutPeriod);
-// }
-
+// Onkey Function
 document.onkeyup = function(event) {
   //the user clicks on a random key
-  var userGuess = event.key; //??? how to make all user iput to be uppercase
+  var userGuess = event.key;
 
   console.log(userGuess);
 
-  //Problem----Condition: userGuess cannot be entered repetitively
-  //Solution -- using includes method to compare and return false to stop the keyon function working
+  //using includes method to compare and return false to stop the keyon function working
 
   if (userGuessArr.includes(userGuess)) {
     return false;
@@ -226,29 +189,69 @@ document.onkeyup = function(event) {
       userGuessArr = [];
 
       if (displayLetters === "n a r u t o") {
-        show_image("assets/images/naruto.jpg", 376, 410, "display: block;", "Naruto");
+        show_image(
+          "assets/images/naruto.jpg",
+          376,
+          410,
+          "display: block;",
+          "Naruto"
+        );
         playSong("assets/music/naruto.mp3");
       } else if (displayLetters === "p o n y o") {
-        show_image("assets/images/ponyo.jpeg", 376, 510, "display: block;", "Ponyo");
+        show_image(
+          "assets/images/ponyo.jpeg",
+          376,
+          510,
+          "display: block;",
+          "Ponyo"
+        );
         playSong("assets/music/ponyo.mp3");
       } else if (displayLetters === "a k i r a") {
-        show_image("assets/images/akira.jpg", 376, 410, "display: block;", "Akira");
+        show_image(
+          "assets/images/akira.jpg",
+          376,
+          410,
+          "display: block;",
+          "Akira"
+        );
         playSong("assets/music/akira.mp3");
       } else if (displayLetters === "y o u r   n a m e") {
-        show_image("assets/images/yourname.jpg", 376, 580, "display: block;", "Your Name");
+        show_image(
+          "assets/images/yourname.jpg",
+          376,
+          580,
+          "display: block;",
+          "Your Name"
+        );
         playSong("assets/music/yourname.mp3");
       } else if (displayLetters === "b l e a c h") {
-        show_image("assets/images/bleach.jpg", 376, 510, "display: block;", "Bleach");
+        show_image(
+          "assets/images/bleach.jpg",
+          376,
+          510,
+          "display: block;",
+          "Bleach"
+        );
         playSong("assets/music/bleach.mp3");
       } else if (displayLetters === "d r a g o n   b a l l") {
-        show_image("assets/images/dragonball.jpg", 376, 450, "display: block;", "Dragon Ball");
+        show_image(
+          "assets/images/dragonball.jpg",
+          376,
+          450,
+          "display: block;",
+          "Dragon Ball"
+        );
         playSong("assets/music/dragonball.mp3");
       } else if (displayLetters === "p a p r i k a") {
-        show_image("assets/images/paprika.jpg", 376, 510, "display: block;", "Paprika");
+        show_image(
+          "assets/images/paprika.jpg",
+          376,
+          510,
+          "display: block;",
+          "Paprika"
+        );
         playSong("assets/music/paprika.mp3");
       }
-
-      //timeRefresh(5000 * 3);
     }
 
     //reloading the page after 12 guesses are used up
@@ -279,46 +282,82 @@ document.onkeyup = function(event) {
       }
     }
 
-    
-
-    //Problem: logic for wins number
-    //Solution: when it displaydashes is filled up with displayLetters, the winNum will go up by 1;
+    //when it displaydashes is filled up with displayLetters, the winNum will go up by 1;
     //And the page will reload again!
 
     if (displayDashes === displayLetters) {
       winNum += 1;
       guessLeft = 12;
 
-      userGuessArr = []; //issue of pushing the last letter to a new empty array
+      userGuessArr = [];
 
       //make button visible
       button.style.display = "block";
       buttonRestart.style.display = "block";
-      //timeRefresh(5000*3);
-
-      //Problem: page can reload but the winNum should not change ?????
     }
 
     if (displayDashes === "n a r u t o") {
-      show_image("assets/images/naruto.jpg", 376, 410, "display: block;","Naruto");
-      playSong ("assets/music/naruto.mp3");
+      show_image(
+        "assets/images/naruto.jpg",
+        376,
+        410,
+        "display: block;",
+        "Naruto"
+      );
+      playSong("assets/music/naruto.mp3");
     } else if (displayDashes === "p o n y o") {
-      show_image("assets/images/ponyo.jpeg", 376, 510, "display: block;","Ponyo");
+      show_image(
+        "assets/images/ponyo.jpeg",
+        376,
+        510,
+        "display: block;",
+        "Ponyo"
+      );
       playSong("assets/music/ponyo.mp3");
     } else if (displayDashes === "a k i r a") {
-      show_image("assets/images/akira.jpg", 376, 410, "display: block;","Akira");
+      show_image(
+        "assets/images/akira.jpg",
+        376,
+        410,
+        "display: block;",
+        "Akira"
+      );
       playSong("assets/music/akira.mp3");
     } else if (displayDashes === "y o u r   n a m e") {
-      show_image("assets/images/yourname.jpg", 376, 580, "display: block;","Your Name");
-      playSong("assets/music/yourname.mp3")
+      show_image(
+        "assets/images/yourname.jpg",
+        376,
+        580,
+        "display: block;",
+        "Your Name"
+      );
+      playSong("assets/music/yourname.mp3");
     } else if (displayDashes === "b l e a c h") {
-      show_image("assets/images/bleach.jpg", 376, 510, "display: block;","Bleach");
+      show_image(
+        "assets/images/bleach.jpg",
+        376,
+        510,
+        "display: block;",
+        "Bleach"
+      );
       playSong("assets/music/bleach.mp3");
     } else if (displayDashes === "d r a g o n   b a l l") {
-      show_image("assets/images/dragonball.jpg", 376, 450, "display: block;","Dragon Ball");
+      show_image(
+        "assets/images/dragonball.jpg",
+        376,
+        450,
+        "display: block;",
+        "Dragon Ball"
+      );
       playSong("assets/music/dragonball.mp3");
     } else if (displayDashes === "p a p r i k a") {
-      show_image("assets/images/paprika.jpg", 376, 510, "display: block;","Paprika");
+      show_image(
+        "assets/images/paprika.jpg",
+        376,
+        510,
+        "display: block;",
+        "Paprika"
+      );
       playSong("assets/music/paprika.mp3");
     }
   } else {
