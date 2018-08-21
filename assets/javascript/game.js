@@ -40,9 +40,7 @@ for (i = 0; i < computerChoice.length; i++) {
   computerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g, "_"));
 
   var displayDashes = computerChoiceDashes.join(" ");
-}
 
-for (i = 0; i < computerChoice.length; i++) {
   computerChoiceContainer.push(computerChoice[i]);
 
   var displayLetters = computerChoiceContainer.join(" ");
