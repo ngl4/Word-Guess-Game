@@ -18,8 +18,7 @@ var userGuessArr = []; //Aready guess letters
 var computerChoiceDashes = [];
 var computerChoiceContainer = [];
 
-
-function playSong (url) {
+function playSong(url) {
   var audio = new Audio();
   audio.src = url;
   audio.play();
@@ -68,67 +67,51 @@ function show_image(src, width, height, alt) {
 //Create a button
 var button = document.getElementById("myDiv");
 button.style.display = "none";
-button.onclick = playAgain;
+button.onclick = tryAgain;
 
-function playAgain() {
-  
 
-  ComputerChoiceDashes = [];
-  ComputerChoiceContainer = [];
-
-  guessLeft = 12;
-  if (guessLeft === 11){
-    userGuessArr = []; 
-    }
+//tryAgain function is to generate a new word that is different from the previous computerChoice
+function tryAgain() {
+  userGuessArr = [];
 
   //remove a chosen computerChoice index from the array
   var rmIndex = animeArr.indexOf(computerChoice);
   animeArr.splice(rmIndex, 1);
+  console.log(animeArr);
 
   //Randomly generate a new computerChoice
   computerChoice = animeArr[Math.floor(Math.random() * animeArr.length)];
+  console.log(computerChoice);
+
+  computerChoiceDashes = [];
+  computerChoiceContainer = [];
 
   for (i = 0; i < computerChoice.length; i++) {
-    ComputerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g, "_"));
-
+    computerChoiceDashes.push(computerChoice[i].replace(/[a-zA-Z]/g, "_"));
+  
     displayDashes = computerChoiceDashes.join(" ");
   }
-
+  
   for (i = 0; i < computerChoice.length; i++) {
-    ComputerChoiceContainer.push(computerChoice[i]);
-
+    computerChoiceContainer.push(computerChoice[i]);
+  
     displayLetters = computerChoiceContainer.join(" ");
   }
 
-  //Displaying the Dashes
   document.getElementById("word-guess").textContent = displayDashes;
+
+  //Problem: Remove Img 
+  
 
   //hide the button & image
   button.style.display = "none";
 }
-//It is better to put all of these into a function --- a function: you can reuse it
-
-//show the button once you win the game/ cannot guess the word
-
-//get the Array and rm the word that the computerChoice has generated from the animeArr
-
-//get another random computerChoice (see above)
-
-//remove the image
-
-//hide the button
-
-//you then call the function when you win or when you used up all the guesses
-
-
 
 
 //setting time to be refreshed
-function timeRefresh(timeoutPeriod) {
-  setTimeout("location.reload(true);", timeoutPeriod);
-}
-
-
+// function timeRefresh(timeoutPeriod) {
+//   setTimeout("location.reload(true);", timeoutPeriod);
+// }
 
 document.onkeyup = function(event) {
   //the user clicks on a random key
@@ -145,63 +128,46 @@ document.onkeyup = function(event) {
 
   if (userGuess !== computerChoice.includes(userGuess)) {
     guessLeft -= 1;
+    userGuessArr.push(userGuess);
 
     if (guessLeft === 0) {
       guessLeft = 12;
-      userGuessArr =[];
+      userGuessArr = [];
 
       if (displayLetters === "n a r u t o") {
         show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
-        playSong ("assets/music/naruto.mp3");
-      } else if (
-        displayLetters === "p o n y o"
-      ) {
+        //playSong("assets/music/naruto.mp3");
+      } else if (displayLetters === "p o n y o") {
         show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
-        playSong("assets/music/ponyo.mp3");
-      } else if (
-        displayLetters === "a k i r a"
-      ) {
+        //playSong("assets/music/ponyo.mp3");
+      } else if (displayLetters === "a k i r a") {
         show_image("assets/images/akira.jpg", 376, 410, "Akira");
-        playSong("assets/music/akira.mp3");
-      } else if (
-        displayLetters === "y o u r   n a m e"
-      ) {
+        //playSong("assets/music/akira.mp3");
+      } else if (displayLetters === "y o u r   n a m e") {
         show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
-        playSong("assets/music/yourname.mp3");
-      } else if (
-        displayLetters === "b l e a c h"
-      ) {
+        //playSong("assets/music/yourname.mp3");
+      } else if (displayLetters === "b l e a c h") {
         show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
-        playSong("assets/music/bleach.mp3");
-      } else if (
-        displayLetters === "d r a g o n   b a l l"
-      ) {
+        //playSong("assets/music/bleach.mp3");
+      } else if (displayLetters === "d r a g o n   b a l l") {
         show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
-        playSong("assets/music/dragonball.mp3");
-      } else if (
-        displayLetters === "p a p r i k a"
-      ) {
+        //playSong("assets/music/dragonball.mp3");
+      } else if (displayLetters === "p a p r i k a") {
         show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
-        playSong("assets/music/paprika.mp3");
+        //playSong("assets/music/paprika.mp3");
       }
 
-      timeRefresh(5000*3);
-
-      
+      //timeRefresh(5000 * 3);
     }
 
+    //reloading the page after 12 guesses are used up
+    //computerChoice will be refreshed too with another new word
 
+    //Problem: Display the final answer even user cannot guess out the letter
 
-      //reloading the page after 12 guesses are used up
-      //computerChoice will be refreshed too with another new word
-
-      //Problem: Display the final answer even user cannot guess out the letter
-
-      //make button visible
-      //button.style.display = "block";
-      
-    }
-  
+    //make button visible
+    button.style.display = "block";
+  }
 
   if (computerChoice.includes(userGuess)) {
     //includes() will return true or false
@@ -221,6 +187,8 @@ document.onkeyup = function(event) {
       }
     }
 
+    
+
     //Problem: logic for wins number
     //Solution: when it displaydashes is filled up with displayLetters, the winNum will go up by 1;
     //And the page will reload again!
@@ -228,51 +196,37 @@ document.onkeyup = function(event) {
     if (displayDashes === displayLetters) {
       winNum += 1;
       guessLeft = 12;
-      
-   
+
       userGuessArr = []; //issue of pushing the last letter to a new empty array
-      
 
       //make button visible
-      //button.style.display = "block";
-      timeRefresh(5000*3);
+      button.style.display = "block";
+      //timeRefresh(5000*3);
 
       //Problem: page can reload but the winNum should not change ?????
     }
 
     if (displayDashes === "n a r u t o") {
       show_image("assets/images/naruto.jpg", 376, 410, "Naruto");
-      playSong ("assets/music/naruto.mp3");
-    } else if (
-      displayDashes === "p o n y o"
-    ) {
+      //playSong ("assets/music/naruto.mp3");
+    } else if (displayDashes === "p o n y o") {
       show_image("assets/images/ponyo.jpeg", 376, 510, "Ponyo");
-      playSong("assets/music/ponyo.mp3");
-    } else if (
-      displayDashes === "a k i r a"
-    ) {
+      //playSong("assets/music/ponyo.mp3");
+    } else if (displayDashes === "a k i r a") {
       show_image("assets/images/akira.jpg", 376, 410, "Akira");
-      playSong("assets/music/akira.mp3");
-    } else if (
-      displayDashes === "y o u r   n a m e"
-    ) {
+      //playSong("assets/music/akira.mp3");
+    } else if (displayDashes === "y o u r   n a m e") {
       show_image("assets/images/yourname.jpg", 376, 580, "Your Name");
-      playSong("assets/music/yourname.mp3")
-    } else if (
-      displayDashes === "b l e a c h"
-    ) {
+      //playSong("assets/music/yourname.mp3")
+    } else if (displayDashes === "b l e a c h") {
       show_image("assets/images/bleach.jpg", 376, 510, "Bleach");
-      playSong("assets/music/bleach.mp3");
-    } else if (
-      displayDashes === "d r a g o n   b a l l"
-    ) {
+      //playSong("assets/music/bleach.mp3");
+    } else if (displayDashes === "d r a g o n   b a l l") {
       show_image("assets/images/dragonball.jpg", 376, 450, "Dragon Ball");
-      playSong("assets/music/dragonball.mp3");
-    } else if (
-      displayDashes === "p a p r i k a"
-    ) {
+      //playSong("assets/music/dragonball.mp3");
+    } else if (displayDashes === "p a p r i k a") {
       show_image("assets/images/paprika.jpg", 376, 510, "Paprika");
-      playSong("assets/music/paprika.mp3");
+      //playSong("assets/music/paprika.mp3");
     }
   } else {
     console.log("not matches");
@@ -280,9 +234,9 @@ document.onkeyup = function(event) {
 
   //display all userGuess into html
 
- 
 
-  userGuessArr.push(userGuess);
+
+
   document.getElementById(
     "letters-already-guess"
   ).textContent = userGuessArr.join(", ");
