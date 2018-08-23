@@ -88,45 +88,31 @@ function tryAgain() {
 
   //Remove Image
   if (computerChoice === "naruto") {
-    while (imgElement.firstChild) {
-      imgElement.removeChild(imgElement.firstChild);
-    }
+    imgElement.parentNode.removeChild(imgElement);
 
     pauseSong("assets/music/naruto.mp3");
   } else if (computerChoice === "ponyo") {
-    while (imgElement.firstChild) {
-      imgElement.removeChild(imgElement.firstChild);
-    }
+    imgElement.parentNode.removeChild(imgElement);
 
     pauseSong("assets/music/ponyo.mp3");
   } else if (computerChoice === "bleach") {
-    while (imgElement.firstChild) {
-      imgElement.removeChild(imgElement.firstChild);
-    }
+    imgElement.parentNode.removeChild(imgElement);
 
     pauseSong("assets/music/bleach.mp3");
   } else if (computerChoice === "your name") {
-    while (imgElement.firstChild) {
-      imgElement.removeChild(imgElement.firstChild);
-    }
+    imgElement.parentNode.removeChild(imgElement);
 
     pauseSong("assets/music/yourname.mp3");
   } else if (computerChoice === "dragon ball") {
-    while (imgElement.firstChild) {
-      imgElement.removeChild(imgElement.firstChild);
-    }
+    imgElement.parentNode.removeChild(imgElement);
 
     pauseSong("assets/music/dragonball.mp3");
   } else if (computerChoice === "akira") {
-    while (imgElement.firstChild) {
-      imgElement.removeChild(imgElement.firstChild);
-    }
+    imgElement.parentNode.removeChild(imgElement);
 
     pauseSong("assets/music/akira.mp3");
   } else if (computerChoice === "paprika") {
-    while (imgElement.firstChild) {
-      imgElement.removeChild(imgElement.firstChild);
-    }
+    imgElement.parentNode.removeChild(imgElement);
 
     pauseSong("assets/music/paprika.mp3");
   }
