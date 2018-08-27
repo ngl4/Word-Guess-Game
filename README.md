@@ -6,8 +6,8 @@ This Hangman game allows user to guess the name of some popular Japanese Anime. 
 Have Fun Playing This Game! 
 
 ### Reflection:
-I have struggled a lot while working on this game JavaScript logic. Especially when I know or i want to create a certain effect, I will get stuck and will try to find a way out by doing a lot of researches on stack overflow. For instance, instead of using `.push()` method to push the letter keys pressed to replace `_` dashes with a specific guess (in another word, a letter), I use `replace()` method to replace the dashes with the specific letter. This works too, but it is more complicated and I even need to test out all the answers on stack overflow in order to find one that actually works with the `replace()` method. 
+I have struggled a lot while working on this game's JavaScript logic. Especially when I know or i want to create a certain effect, I will get stuck and will try to find a way out by doing a lot of researches on stack overflow. For instance, instead of using `.push()` method to push the letter keys pressed to replace `_` dashes with specific guesses (in another word, letters), I use `replace()` method to replace dashes with specific letters. This works too, but it is more complicated and I even need to test out all the answers on stack overflow in order to find one that actually works with the `replace()` method. 
 
-From this basic game project, I learn to slow myself down and rethink of my code more. Instead of doing a lot of researches on stack overflow, I will spend more time dong pseudo-code. There are many ways to code and there are always a better way to code or a way that you actually understand what you are coding. 
+From this basic game project, I learn to slow myself down and rethink on my code more. Instead of doing a lot of researches on stack overflow, I will spend more time doing pseudo-code. There are many ways to code and there are always a better way to code or a way that you actually understand what you are coding. 
 
 I struggle throughout the production process of this game, but I learn to write code from scratch and only do research for checking on my own code. 
